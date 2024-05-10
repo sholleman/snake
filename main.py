@@ -4,7 +4,7 @@ from random import randrange
 from pygame.color import THECOLORS
 
 WINDOW = 900
-TILE_SIZE = 50
+TILE_SIZE = 100
 RANGE = (TILE_SIZE // 2, WINDOW - TILE_SIZE // 2, TILE_SIZE)
 
 UP = (0, -TILE_SIZE)
@@ -23,7 +23,7 @@ snake_dir = (0, 0)
 food = snake.copy()
 food.center = get_random_position()
 
-time, time_step = 0, 110
+time, TIME_STEP = 0, 110 * 2
 
 screen = pg.display.set_mode([WINDOW, WINDOW])
 clock = pg.time.Clock()
@@ -91,7 +91,7 @@ while True:
 
     # move snake
     time_now = pg.time.get_ticks()
-    if time_now - time > time_step:
+    if time_now - time > TIME_STEP:
         time = time_now
         snake.move_ip(snake_dir)
         segments.append(snake.copy())
